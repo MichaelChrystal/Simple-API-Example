@@ -46,6 +46,14 @@ namespace Simple_API_Example.Controllers
             return new HttpResponseMessage()
             { StatusCode = HttpStatusCode.Created };
         }
+        [Route("GetStudentByIdForYear/SID/{id}/Year/{year:int}")]
+        public dynamic GetStudentByIdForYear(string id, int year)
+        {
+            string IID = id;
+            int IYear = year;
 
+            return  new HttpResponseMessage()
+            { StatusCode = HttpStatusCode.Created };
+        }
     }
 }
