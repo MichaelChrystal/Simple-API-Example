@@ -8,18 +8,21 @@ using System.Web.Http;
 namespace Simple_API_Example.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/values")]
     public class ValuesController : ApiController
     {
         // GET api/values
+        [Route("getValues")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
+        [Route("getVal")]
         public string Get(int id)
         {
-            return "value";
+            return "value" + id.ToString();
         }
 
         // POST api/values
@@ -36,5 +39,13 @@ namespace Simple_API_Example.Controllers
         public void Delete(int id)
         {
         }
+        [Route("postVal")]
+        public HttpResponseMessage post([FromBody]string value)
+        {
+            string val = value;
+            return new HttpResponseMessage()
+            { StatusCode = HttpStatusCode.Created };
+        }
+
     }
 }
